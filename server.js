@@ -35,10 +35,18 @@ const port = process.env.PORT || 3000;
 // 2. set a header with content type `text/html`, and 
 // 3. end with the data that you are reading in from ./www/index.html.
 
+var data
+
+try {
+  data = fs.readFileSync('index.html', 'utf8')
+} catch (err) {
+  console.error(err)
+}
+
 const server = http.createServer((req, res) => {
     res.statusCode = 200
     res.setHeader('Content-Type', 'text/html')
-    res.end('<h1>Hello, World!</h1>')
+    res.end(data)
   });
 
 // Start the `server` const listening on the port defined by argument in your `port` const. 
