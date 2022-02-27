@@ -38,7 +38,7 @@ const port = process.env.PORT || 3000;
 var data
 
 try {
-  data = fs.readFileSync('index.html', 'utf8')
+  data = fs.readFileSync('www/index.html', 'utf8')
 } catch (err) {
   throw new Error()
 }
