@@ -27,13 +27,8 @@ const port = args['port'] || 3000;
 // If there is an error, put it on the console error, return, and exit with error code 1. 
 // Do not be nice about exiting.
 
-var data
-
-try {
-  data = fs.readFileSync('www/index.html', 'utf8')
-} catch (err) {
-  throw new Error()
-}
+fs.readFile('www/index.html', 'utf8' , (err, data) => {
+  
 
 // Define a const `server` as an arrow function using http.createServer. 
 // Use the documentation for the node.js http module. 
@@ -56,3 +51,4 @@ server.listen(port, () => {
   })
 
 // That's it! You're all done!
+})
