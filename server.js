@@ -40,7 +40,7 @@ var data
 try {
   data = fs.readFileSync('index.html', 'utf8')
 } catch (err) {
-  console.error(err)
+  throw new Error()
 }
 
 const server = http.createServer((req, res) => {
