@@ -28,7 +28,11 @@ const port = args['port'] || 3000;
 // Do not be nice about exiting.
 
 fs.readFile('www/index.html', 'utf8' , (err, data) => {
-  
+  if(err) {
+    console.error(err)
+    return
+    process.exit(1)
+  }
 
 // Define a const `server` as an arrow function using http.createServer. 
 // Use the documentation for the node.js http module. 
