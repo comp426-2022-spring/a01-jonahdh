@@ -8,13 +8,16 @@ const fs = require('fs');
 
 // Require minimist module (make sure you install this one via npm).
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
+const args = require('minimist')(process.argv.slice(2))
 
 // Define allowed argument name 'port'.
+
+args['port']
 
 // Define a const `port` using the argument from the command line. 
 // Make this const default to port 3000 if there is no argument given for `--port`.
 
-const port = process.env.PORT || 3000;
+const port = args['port'] || 3000;
 
 // Use the fs module to create an arrow function using `fs.readFile`.
 // Use the documentation for the Node.js `fs` module. 
@@ -24,17 +27,6 @@ const port = process.env.PORT || 3000;
 // If there is an error, put it on the console error, return, and exit with error code 1. 
 // Do not be nice about exiting.
 
-
-
-
-
-// Define a const `server` as an arrow function using http.createServer. 
-// Use the documentation for the node.js http module. 
-// The function should have three responses: 
-// 1. status code 200, 
-// 2. set a header with content type `text/html`, and 
-// 3. end with the data that you are reading in from ./www/index.html.
-
 var data
 
 try {
@@ -42,6 +34,13 @@ try {
 } catch (err) {
   throw new Error()
 }
+
+// Define a const `server` as an arrow function using http.createServer. 
+// Use the documentation for the node.js http module. 
+// The function should have three responses: 
+// 1. status code 200, 
+// 2. set a header with content type `text/html`, and 
+// 3. end with the data that you are reading in from ./www/index.html.
 
 const server = http.createServer((req, res) => {
     res.statusCode = 200
